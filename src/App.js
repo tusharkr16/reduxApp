@@ -3,7 +3,8 @@ import Navbar from './Components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import ProductComponent from './Components/ProductComponent';
 import ProductListing from './Components/ProductListing';
-import Detail from "./Components/Detail"
+import Detaildata from './Components/Detaildata';
+
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' exact Component={ProductListing} />
-          <Route path='/product/:productid' exact Component={Detail} />
+          <Route path='/product/:productid' exact Component={Detaildata} />
           <Route>404 NOT FOUND</Route>
         </Routes>
       </Router>

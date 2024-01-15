@@ -1,10 +1,11 @@
+
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeselectedProducts, selectedProducts } from '../Containers/actions/actions';
 
-const Detail = () => {
+const Detaildata = () => {
     const product = useSelector((state) => state.product);
     const { image, title, price, category, description } = product;
     console.log(product)
@@ -23,7 +24,6 @@ const Detail = () => {
     }, [productid]);
     return (
         <div className="container-fluid">
-
             <div className="row">
                 <div className="col-xl-8 border border-dark mt-3 my-3">
                     <img src={image} className='img-fluid mx-3 my-3 ' style={{ width: "70%", height: "70%" }} alt="" />
@@ -41,8 +41,11 @@ const Detail = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
-export default Detail
+export default Detaildata
+
+
+
