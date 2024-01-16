@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,20 +8,26 @@ import { removeselectedProducts, selectedProducts } from '../Containers/actions/
 const Detaildata = () => {
     const product = useSelector((state) => state.product);
     const { image, title, price, category, description } = product;
-    console.log(product)
+    console.log(product);
     const { productid } = useParams();
     const dispatch = useDispatch();
-    const fetchProductDetail = async () => {
-        const response = await axios.get(`https://fakestoreapi.com/products/${productid}`).catch((err) => { console.log(err, "err") })
-        dispatch(selectedProducts(response.data));
-    }
+
+    const fetchProductDetail = useCallback(async () => {
+        try {
+            const response = await axios.get(`https://fakestoreapi.com/products/${productid}`);
+            dispatch(selectedProducts(response.data));
+        } catch (err) {
+            console.log(err, "err");
+        }
+    }, [dispatch, productid]);
 
     useEffect(() => {
-        fetchProductDetail()
-        return (() => {
-            dispatch(removeselectedProducts())
-        })
-    }, [productid]);
+        fetchProductDetail();
+
+        return () => {
+            dispatch(removeselectedProducts());
+        };
+    }, [fetchProductDetail, dispatch, productid]);
     return (
         <div className="container-fluid">
             <div className="row">

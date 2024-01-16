@@ -1,18 +1,15 @@
 .product-card:hover {
     transform: scale(1.1);
-    -webkit-filter: brightness(50%);
-    -webkit-transition: 0.2s all;
+    filter: brightness(50%);
+    transition: 0.2s all;
 }
 .product-card{
     color: #000;
   position: relative;
   height: 350px;
-  /* width: calc(25% - 20px); */
-  /* padding: 6px; */
   border: 1px solid #ddd;
   border-radius: 8px;
   cursor: pointer;
-  /* -webkit-transition: 0.2s all; */
   overflow: hidden;
 
   display: flex;
@@ -24,7 +21,7 @@
    width: 50%;
   height: 100%;
   border-radius: 8px;
-  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
   object-fit: contain;
 } 
 
